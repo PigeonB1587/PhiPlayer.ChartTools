@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Nuodami4.PhiPlayer.ChartTools.Converter
+namespace Nuodami4.PhiPlayer.ChartTools.Core.RePhiedit.v0
 {
-    public class Class1
+    public static class Chart
     {
+        
     }
 }

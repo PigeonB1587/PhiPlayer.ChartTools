@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Nuodami4.PhiPlayer.ChartTools.Utils
+namespace Nuodami4.PhiPlayer.ChartTools.Core.Phigros.v1
 {
-    public class Class1
+    public static class Chart
     {
+
     }
 }
