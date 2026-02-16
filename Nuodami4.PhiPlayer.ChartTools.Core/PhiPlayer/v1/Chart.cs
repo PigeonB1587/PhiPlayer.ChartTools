@@ -29,8 +29,8 @@ namespace Nuodami4.PhiPlayer.ChartTools.Core.PhiPlayer.v1
             public int[] startTime { get; set; }
             public int[] endTime { get; set; }
             public int easingType { get; set; }
-            public float easingStart { get; set; }
-            public float easingEnd { get; set; }
+            public float easingLeftX { get; set; }
+            public float easingRightX { get; set; }
             public float[] bezierPoints { get; set; }
             public float start { get; set; }
             public float end { get; set; }
@@ -65,6 +65,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Core.PhiPlayer.v1
             public Note[] notes { get; set; }
             public JudgeLineEvent[] speedEvents { get; set; }
             public JudgeLineTransformLayer[] judgeLineTransformLayers { get; set; }
+            public int[] judgeLineTint { get; set; }
             public int fatherLineIndex { get; set; }
             public bool isLocalEulerAngle { get; set; }
             public bool isLocalPosition { get; set; }

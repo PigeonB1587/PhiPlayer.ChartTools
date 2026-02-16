@@ -3,7 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36915.13 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuodami4.PhiPlayer.ChartTools.Core", "Nuodami4.PhiPlayer.ChartTools.Core\Nuodami4.PhiPlayer.ChartTools.Core.csproj", "{35FC448B-0B2E-4B02-B777-79A9E2C9252A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuodami4.PhiPlayer.ChartTools.Utils", "Nuodami4.PhiPlayer.ChartTools.Utils\Nuodami4.PhiPlayer.ChartTools.Utils.csproj", "{9A302085-653B-4573-A780-69791C220B66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuodami4.PhiPlayer.ChartTools.Console", "Nuodami4.PhiPlayer.ChartTools.Console\Nuodami4.PhiPlayer.ChartTools.Console.csproj", "{97CF8D3B-F91E-4094-8778-F0B6729313C3}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{35FC448B-0B2E-4B02-B777-79A9E2C9252A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35FC448B-0B2E-4B02-B777-79A9E2C9252A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35FC448B-0B2E-4B02-B777-79A9E2C9252A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35FC448B-0B2E-4B02-B777-79A9E2C9252A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A302085-653B-4573-A780-69791C220B66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A302085-653B-4573-A780-69791C220B66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A302085-653B-4573-A780-69791C220B66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A302085-653B-4573-A780-69791C220B66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97CF8D3B-F91E-4094-8778-F0B6729313C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97CF8D3B-F91E-4094-8778-F0B6729313C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97CF8D3B-F91E-4094-8778-F0B6729313C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97CF8D3B-F91E-4094-8778-F0B6729313C3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
