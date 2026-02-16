@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace Nuodami4.PhiPlayer.ChartTools.Core.RePhiedit.v0
+namespace Nuodami4.PhiPlayer.ChartTools.Core.RePhiedit
 {
     public static class Chart
     {

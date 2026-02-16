@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Nuodami4.PhiPlayer.ChartTools.Core.PhiPlayer.v1
+namespace Nuodami4.PhiPlayer.ChartTools.Core.PhiPlayer
 {
     public static class Chart
     {
