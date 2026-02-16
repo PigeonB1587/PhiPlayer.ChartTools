@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Nuodami4.PhiPlayer.ChartTools.Console
+namespace Nuodami4.PhiPlayer.ChartTools.Utils
 {
-    internal class Program
+    internal class Phigros
     {
-        static void Main(string[] args)
-        {
-
-        }
     }
 }

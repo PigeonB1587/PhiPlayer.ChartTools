@@ -49,5 +49,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nuodami4.PhiPlayer.ChartTools.Core\Nuodami4.PhiPlayer.ChartTools.Core.csproj">
+      <Project>{35fc448b-0b2e-4b02-b777-79a9e2c9252a}</Project>
+      <Name>Nuodami4.PhiPlayer.ChartTools.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuodami4.PhiPlayer.ChartTools.Utils\Nuodami4.PhiPlayer.ChartTools.Utils.csproj">
+      <Project>{9a302085-653b-4573-a780-69791c220b66}</Project>
+      <Name>Nuodami4.PhiPlayer.ChartTools.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -44,11 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Phigros\v1\Chart.cs" />
-    <Compile Include="Phigros\v3\Chart.cs" />
-    <Compile Include="PhiPlayer\v1\Chart.cs" />
+    <Compile Include="Phigredit\Chart.cs" />
+    <Compile Include="Phigros\Chart.cs" />
+    <Compile Include="PhiPlayer\Chart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RePhiedit\v0\Chart.cs" />
+    <Compile Include="RePhiedit\Chart.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
