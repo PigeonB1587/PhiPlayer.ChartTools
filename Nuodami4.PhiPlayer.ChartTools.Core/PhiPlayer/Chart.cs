@@ -1,11 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace Nuodami4.PhiPlayer.ChartTools.Core.PhiPlayer
 {
+    public static class JsonHelper
+    {
+        public static Chart.Root ToPhiPlayer(this string json)
+            => JsonConvert.DeserializeObject<Chart.Root>(json);
+
+        public static string ToJson(this Chart.Root chart)
+            => JsonConvert.SerializeObject(chart);
+    }
+
     public static class Chart
     {
         [Serializable]

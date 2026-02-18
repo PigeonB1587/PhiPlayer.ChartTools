@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace Nuodami4.PhiPlayer.ChartTools.Utils
 {
-    internal class RePhiedit
+    public static partial class ChartConverter
+    {
+        public static Core.PhiPlayer.Chart.Root ToPhiPlayer(Core.RePhiedit.Chart.Root chart)
+        {
+            var obj = new Core.PhiPlayer.Chart.Root();
+
+
+            return obj;
+        }
+    }
+
+    public static class RePhiedit
     {
     }
 }

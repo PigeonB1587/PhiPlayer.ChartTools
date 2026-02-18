@@ -1,12 +1,17 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Nuodami4.PhiPlayer.ChartTools.Core.Phigros
 {
+    public static class JsonHelper
+    {
+        public static Chart.Root ToPhiPlayer(this string json)
+            => JsonConvert.DeserializeObject<Chart.Root>(json);
+
+        public static string ToJson(this Chart.Root chart)
+            => JsonConvert.SerializeObject(chart);
+    }
+
     public static class Chart
     {
         [Serializable]
@@ -54,8 +59,8 @@ namespace Nuodami4.PhiPlayer.ChartTools.Core.Phigros
             [JsonConverter(typeof(FloatToIntConverter))] public int endTime { get; set; }
             public float start { get; set; }
             public float end { get; set; }
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public float? start2 { get; set; }
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public float? end2 { get; set; }
+            public float? start2 { get; set; }
+            public float? end2 { get; set; }
         }
     }
     public class FloatToIntConverter : JsonConverter<int>

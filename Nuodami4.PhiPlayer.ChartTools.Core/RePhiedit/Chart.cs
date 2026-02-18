@@ -3,6 +3,15 @@ using System;
 
 namespace Nuodami4.PhiPlayer.ChartTools.Core.RePhiedit
 {
+    public static class JsonHelper
+    {
+        public static Chart.Root ToPhiPlayer(this string json)
+            => JsonConvert.DeserializeObject<Chart.Root>(json);
+
+        public static string ToJson(this Chart.Root chart)
+            => JsonConvert.SerializeObject(chart);
+    }
+
     public static class Chart
     {
         [Serializable]

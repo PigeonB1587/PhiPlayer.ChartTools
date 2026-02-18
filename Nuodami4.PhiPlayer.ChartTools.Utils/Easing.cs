@@ -35,7 +35,5 @@ namespace Nuodami4.PhiPlayer.ChartTools.Utils
         public static double OutBounce(double x) => x < 1.0 / 2.75 ? 7.5625 * x * x : x < 2.0 / 2.75 ? 7.5625 * (x - 1.5 / 2.75) * (x - 1.5 / 2.75) + 0.75 : x < 2.5 / 2.75 ? 7.5625 * (x - 2.25 / 2.75) * (x - 2.25 / 2.75) + 0.9375 : 7.5625 * (x - 2.625 / 2.75) * (x - 2.625 / 2.75) + 0.984375;
         public static double InBounce(double x) => 1 - OutBounce(1 - x);
         public static double InOutBounce(double x) => x < 0.5 ? (1 - OutBounce(1 - 2 * x)) / 2.0 : (1 + OutBounce(2 * x - 1)) / 2.0;
-        public static double Zero(double x) => 0;
-        public static double One(double x) => 1;
     }
 }
