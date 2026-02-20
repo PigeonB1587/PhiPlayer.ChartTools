@@ -8,7 +8,12 @@ namespace Nuodami4.PhiPlayer.ChartTools.Utils
 {
     public static partial class Converter
     {
+        public static Core.PhiPlayer.Chart.Root ToPhiPlayer(this Core.Phigros.Chart.Root chart)
+        {
+            var obj = new Core.PhiPlayer.Chart.Root();
 
+            return obj;
+        }
     }
 
     public static class Phigros

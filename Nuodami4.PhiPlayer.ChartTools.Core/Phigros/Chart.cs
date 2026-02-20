@@ -6,24 +6,25 @@ namespace Nuodami4.PhiPlayer.ChartTools.Core.Phigros
     public static class Chart
     {
         [Serializable]
-        public class Root
+        public class Root : IRoot
         {
             public int formatVersion { get; set; }
             public float offset { get; set; }
-            public JudgeLine[] judgeLineList { get; set; }
+            public JudgeLine[] judgeLineList { get; set; } = Array.Empty<JudgeLine>();
             public override string ToString() => JsonConvert.SerializeObject(this);
+            public static Root FromJson(string jsonString) => JsonConvert.DeserializeObject<Root>(jsonString);
         }
 
         [Serializable]
         public class JudgeLine
         {
             public float bpm { get; set; }
-            public Note[] notesAbove { get; set; }
-            public Note[] notesBelow { get; set; }
-            public SpeedEvent[] speedEvents { get; set; }
-            public JudgeLineEvent[] judgeLineDisappearEvents { get; set; }
-            public JudgeLineEvent[] judgeLineMoveEvents { get; set; }
-            public JudgeLineEvent[] judgeLineRotateEvents { get; set; }
+            public Note[] notesAbove { get; set; } = Array.Empty<Note>();
+            public Note[] notesBelow { get; set; } = Array.Empty<Note>();
+            public SpeedEvent[] speedEvents { get; set; } = Array.Empty<SpeedEvent>();
+            public JudgeLineEvent[] judgeLineDisappearEvents { get; set; } = Array.Empty<JudgeLineEvent>();
+            public JudgeLineEvent[] judgeLineMoveEvents { get; set; } = Array.Empty<JudgeLineEvent>();
+            public JudgeLineEvent[] judgeLineRotateEvents { get; set; } = Array.Empty<JudgeLineEvent>();
             public override string ToString() => JsonConvert.SerializeObject(this);
         }
 

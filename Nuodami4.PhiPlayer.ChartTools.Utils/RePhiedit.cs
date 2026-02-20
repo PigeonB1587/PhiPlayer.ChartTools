@@ -6,12 +6,6 @@ namespace Nuodami4.PhiPlayer.ChartTools.Utils
     {
         public static Core.PhiPlayer.Chart.Root ToPhiPlayer(this Core.RePhiedit.Chart.Root chart)
         {
-            var obj = new Core.PhiPlayer.Chart.Root()
-            {
-                formatVersion = 1,
-                offset = -chart.META.offset / 1000f,
-            };
-
             var bpmList = new List<Core.PhiPlayer.Chart.Bpm>();
             foreach (var rawBpmItem in chart.BPMList)
             {
@@ -139,6 +133,13 @@ namespace Nuodami4.PhiPlayer.ChartTools.Utils
                     judgeLineTint = new int[] { 255, 255, 255 }
                 });
             }
+
+            var obj = new Core.PhiPlayer.Chart.Root()
+            {
+                formatVersion = 1,
+                offset = -chart.META.offset / 1000f,
+                judgeLineList = judgeLineList.ToArray()
+            };
 
             return obj;
         }
