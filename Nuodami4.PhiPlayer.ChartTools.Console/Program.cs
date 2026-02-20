@@ -10,7 +10,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Console
     {
         static void Main(string[] args)
         {
-
+            
         }
     }
 }

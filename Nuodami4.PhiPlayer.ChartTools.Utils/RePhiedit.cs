@@ -2,9 +2,9 @@
 
 namespace Nuodami4.PhiPlayer.ChartTools.Utils
 {
-    public static partial class ChartConverter
+    public class RePhieditChartConverter : Core.RePhiedit.Chart.Root
     {
-        public static Core.PhiPlayer.Chart.Root ToPhiPlayer(Core.RePhiedit.Chart.Root chart)
+        public Core.PhiPlayer.Chart.Root ToPhiPlayer(Core.RePhiedit.Chart.Root chart)
         {
             var obj = new Core.PhiPlayer.Chart.Root()
             {
@@ -40,7 +40,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Utils
                         bezierPoints = rawSpeedEventItem.bezierPoints,
                         easingLeftX = rawSpeedEventItem.easingLeft,
                         easingRightX = rawSpeedEventItem.easingRight,
-                        easingType = rawSpeedEventItem.easingType
+                        easingType = RePhiedit.ConvertEasingType(rawSpeedEventItem.easingType)
                     });
                 }
 
@@ -53,7 +53,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Utils
                         endTime = rawNote.endTime,
                         hitFxTint = rawNote.tintHitEffects,
                         key = 0,
-                        noteTint = rawNote.color,
+                        noteTint = new int[] { rawNote.color[0], rawNote.color[1], rawNote.color[2], rawNote.alpha },
                         positionX = rawNote.positionX * (float)RePhiedit.xScale,
                         type = RePhiedit.ConvertNoteType(rawNote.type)
                     });
@@ -66,7 +66,65 @@ namespace Nuodami4.PhiPlayer.ChartTools.Utils
                     var rotateEventList = new List<Core.PhiPlayer.Chart.JudgeLineEvent>();
                     var disappearEventList = new List<Core.PhiPlayer.Chart.JudgeLineEvent>();
 
+                    foreach (var rawEventItem in rawEventLayer.moveXEvents)
+                    {
+                        moveXEventList.Add(new Core.PhiPlayer.Chart.JudgeLineEvent()
+                        {
+                            start = rawEventItem.start * (float)RePhiedit.xScale,
+                            end = rawEventItem.end * (float)RePhiedit.xScale,
+                            startTime = rawEventItem.startTime,
+                            endTime = rawEventItem.endTime,
+                            bezierPoints = rawEventItem.bezierPoints,
+                            easingLeftX = rawEventItem.easingLeft,
+                            easingRightX = rawEventItem.easingRight,
+                            easingType = RePhiedit.ConvertEasingType(rawEventItem.easingType)
+                        });
+                    }
 
+                    foreach (var rawEventItem in rawEventLayer.moveYEvents)
+                    {
+                        moveYEventList.Add(new Core.PhiPlayer.Chart.JudgeLineEvent()
+                        {
+                            start = rawEventItem.start * (float)RePhiedit.yScale,
+                            end = rawEventItem.end * (float)RePhiedit.yScale,
+                            startTime = rawEventItem.startTime,
+                            endTime = rawEventItem.endTime,
+                            bezierPoints = rawEventItem.bezierPoints,
+                            easingLeftX = rawEventItem.easingLeft,
+                            easingRightX = rawEventItem.easingRight,
+                            easingType = RePhiedit.ConvertEasingType(rawEventItem.easingType)
+                        });
+                    }
+
+                    foreach (var rawEventItem in rawEventLayer.rotateEvents)
+                    {
+                        rotateEventList.Add(new Core.PhiPlayer.Chart.JudgeLineEvent()
+                        {
+                            start = -rawEventItem.start,
+                            end = -rawEventItem.end,
+                            startTime = rawEventItem.startTime,
+                            endTime = rawEventItem.endTime,
+                            bezierPoints = rawEventItem.bezierPoints,
+                            easingLeftX = rawEventItem.easingLeft,
+                            easingRightX = rawEventItem.easingRight,
+                            easingType = RePhiedit.ConvertEasingType(rawEventItem.easingType)
+                        });
+                    }
+
+                    foreach (var rawEventItem in rawEventLayer.alphaEvents)
+                    {
+                        disappearEventList.Add(new Core.PhiPlayer.Chart.JudgeLineEvent()
+                        {
+                            start = rawEventItem.start,
+                            end = rawEventItem.end,
+                            startTime = rawEventItem.startTime,
+                            endTime = rawEventItem.endTime,
+                            bezierPoints = rawEventItem.bezierPoints,
+                            easingLeftX = rawEventItem.easingLeft,
+                            easingRightX = rawEventItem.easingRight,
+                            easingType = RePhiedit.ConvertEasingType(rawEventItem.easingType)
+                        });
+                    }
                 }
 
                 judgeLineList.Add(new Core.PhiPlayer.Chart.JudgeLine()
@@ -78,7 +136,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Utils
                     fatherLineIndex = rawLine.father,
                     isLocalEulerAngle = rawLine.rotateWithFather,
                     isLocalPosition = rawLine.father >= 0 ? true : false,
-                    judgeLineTint = new int[] { 1, 1, 1 }
+                    judgeLineTint = new int[] { 255, 255, 255 }
                 });
             }
 
@@ -91,21 +149,36 @@ namespace Nuodami4.PhiPlayer.ChartTools.Utils
         public const double speedScale = 1.3333333333333333d; // value = 4 / 3
         public const double xScale = 0.0014814814814815d; // value = 1 / 675
         public const double yScale = 0.0022222222222222d; // value = 1 / 450
+
+        private static readonly Dictionary<int, int> NoteTypeMap = new Dictionary<int, int>()
+        {
+            {1, 1}, {2, 3}, {3, 4}, {4, 2}
+        };
+
         public static int ConvertNoteType(int i)
         {
-            switch (i)
+            if (NoteTypeMap.TryGetValue(i, out int type))
             {
-                case 1:
-                    return 1;
-                case 2:
-                    return 3;
-                case 3:
-                    return 4;
-                case 4:
-                    return 2;
-                default:
-                    return 1;
+                return type;
             }
+            return 1;
+        }
+
+        private static readonly Dictionary<int, int> EasingTypeMap = new Dictionary<int, int>()
+        {
+            {1, 1}, {2, 3}, {3, 2}, {4, 6}, {5, 5}, {6, 4}, {7, 7}, {8, 9}, {9, 8},
+            {10, 12}, {11, 11}, {12, 10}, {13, 13}, {14, 15}, {15, 14}, {16, 18},
+            {17, 17}, {18, 21}, {19, 20}, {20, 24}, {21, 23}, {22, 22}, {23, 25},
+            {24, 27}, {25, 26}, {26, 30}, {27, 29}, {28, 31}, {29, 28}
+        };
+
+        public static int ConvertEasingType(int i)
+        {
+            if (EasingTypeMap.TryGetValue(i, out int type))
+            {
+                return type;
+            }
+            return 1;
         }
     }
 }

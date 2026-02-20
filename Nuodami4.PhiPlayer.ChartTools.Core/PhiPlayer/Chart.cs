@@ -3,15 +3,6 @@ using System;
 
 namespace Nuodami4.PhiPlayer.ChartTools.Core.PhiPlayer
 {
-    public static class JsonHelper
-    {
-        public static Chart.Root ToPhiPlayer(this string json)
-            => JsonConvert.DeserializeObject<Chart.Root>(json);
-
-        public static string ToJson(this Chart.Root chart)
-            => JsonConvert.SerializeObject(chart);
-    }
-
     public static class Chart
     {
         [Serializable]
@@ -20,6 +11,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Core.PhiPlayer
             public int formatVersion { get; set; }
             public float offset { get; set; }
             public JudgeLine[] judgeLineList { get; set; }
+            public override string ToString() => JsonConvert.SerializeObject(this);
         }
 
         [Serializable]
@@ -27,6 +19,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Core.PhiPlayer
         {
             public float bpm { get; set; }
             public int[] startTime { get; set; }
+            public override string ToString() => JsonConvert.SerializeObject(this);
         }
 
         [Serializable]
@@ -40,6 +33,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Core.PhiPlayer
             public float[] bezierPoints { get; set; }
             public float start { get; set; }
             public float end { get; set; }
+            public override string ToString() => JsonConvert.SerializeObject(this);
         }
 
         [Serializable]
@@ -49,6 +43,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Core.PhiPlayer
             public JudgeLineEvent[] judgeLineMoveYEvents { get; set; }
             public JudgeLineEvent[] judgeLineRotateEvents { get; set; }
             public JudgeLineEvent[] judgeLineDisappearEvents { get; set; }
+            public override string ToString() => JsonConvert.SerializeObject(this);
         }
 
         [Serializable]
@@ -62,6 +57,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Core.PhiPlayer
             public float speed { get; set; }
             public int[] hitFxTint { get; set; }
             public int[] noteTint { get; set; }
+            public override string ToString() => JsonConvert.SerializeObject(this);
         }
 
         [Serializable]
@@ -75,6 +71,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Core.PhiPlayer
             public int fatherLineIndex { get; set; }
             public bool isLocalEulerAngle { get; set; }
             public bool isLocalPosition { get; set; }
+            public override string ToString() => JsonConvert.SerializeObject(this);
         }
     }
 }

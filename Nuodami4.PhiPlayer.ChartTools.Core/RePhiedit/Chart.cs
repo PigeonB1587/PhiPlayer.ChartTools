@@ -3,15 +3,6 @@ using System;
 
 namespace Nuodami4.PhiPlayer.ChartTools.Core.RePhiedit
 {
-    public static class JsonHelper
-    {
-        public static Chart.Root ToPhiPlayer(this string json)
-            => JsonConvert.DeserializeObject<Chart.Root>(json);
-
-        public static string ToJson(this Chart.Root chart)
-            => JsonConvert.SerializeObject(chart);
-    }
-
     public static class Chart
     {
         [Serializable]
@@ -19,6 +10,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Core.RePhiedit
         {
             public float bpm { get; set; }
             public int[] startTime { get; set; }
+            public override string ToString() => JsonConvert.SerializeObject(this);
         }
 
         [Serializable]
@@ -26,6 +18,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Core.RePhiedit
         {
             public int RPEVersion { get; set; }
             public int offset { get; set; }
+            public override string ToString() => JsonConvert.SerializeObject(this);
         }
 
         [Serializable]
@@ -35,6 +28,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Core.RePhiedit
             public Note[] notes { get; set; }
             public bool rotateWithFather { get; set; } = false;
             public int father { get; set; }
+            public override string ToString() => JsonConvert.SerializeObject(this);
         }
 
         [Serializable]
@@ -49,6 +43,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Core.RePhiedit
             public int[] startTime { get; set; }
             public int type { get; set; }
             public int[] tintHitEffects { get; set; }
+            public override string ToString() => JsonConvert.SerializeObject(this);
         }
 
         [Serializable]
@@ -59,6 +54,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Core.RePhiedit
             public Event[] moveYEvents { get; set; }
             public Event[] rotateEvents { get; set; }
             public Event[] speedEvents { get; set; }
+            public override string ToString() => JsonConvert.SerializeObject(this);
         }
 
         [Serializable]
@@ -73,6 +69,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Core.RePhiedit
             public int[] endTime { get; set; }
             public float start { get; set; }
             public int[] startTime { get; set; }
+            public override string ToString() => JsonConvert.SerializeObject(this);
         }
 
         [Serializable]
@@ -81,6 +78,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Core.RePhiedit
             public BPMItem[] BPMList { get; set; }
             public META META { get; set; }
             public JudgeLine[] judgeLineList { get; set; }
+            public override string ToString() => JsonConvert.SerializeObject(this);
         }
     }
 }

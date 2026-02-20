@@ -3,15 +3,6 @@ using System;
 
 namespace Nuodami4.PhiPlayer.ChartTools.Core.Phigros
 {
-    public static class JsonHelper
-    {
-        public static Chart.Root ToPhiPlayer(this string json)
-            => JsonConvert.DeserializeObject<Chart.Root>(json);
-
-        public static string ToJson(this Chart.Root chart)
-            => JsonConvert.SerializeObject(chart);
-    }
-
     public static class Chart
     {
         [Serializable]
@@ -20,6 +11,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Core.Phigros
             public int formatVersion { get; set; }
             public float offset { get; set; }
             public JudgeLine[] judgeLineList { get; set; }
+            public override string ToString() => JsonConvert.SerializeObject(this);
         }
 
         [Serializable]
@@ -32,6 +24,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Core.Phigros
             public JudgeLineEvent[] judgeLineDisappearEvents { get; set; }
             public JudgeLineEvent[] judgeLineMoveEvents { get; set; }
             public JudgeLineEvent[] judgeLineRotateEvents { get; set; }
+            public override string ToString() => JsonConvert.SerializeObject(this);
         }
 
         [Serializable]
@@ -42,6 +35,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Core.Phigros
             public float positionX { get; set; }
             [JsonConverter(typeof(FloatToIntConverter))] public int holdTime { get; set; }
             public float speed { get; set; }
+            public override string ToString() => JsonConvert.SerializeObject(this);
         }
 
         [Serializable]
@@ -50,6 +44,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Core.Phigros
             [JsonConverter(typeof(FloatToIntConverter))] public int startTime { get; set; }
             [JsonConverter(typeof(FloatToIntConverter))] public int endTime { get; set; }
             public float value { get; set; }
+            public override string ToString() => JsonConvert.SerializeObject(this);
         }
 
         [Serializable]
@@ -59,8 +54,9 @@ namespace Nuodami4.PhiPlayer.ChartTools.Core.Phigros
             [JsonConverter(typeof(FloatToIntConverter))] public int endTime { get; set; }
             public float start { get; set; }
             public float end { get; set; }
-            public float? start2 { get; set; }
-            public float? end2 { get; set; }
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public float? start2 { get; set; }
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public float? end2 { get; set; }
+            public override string ToString() => JsonConvert.SerializeObject(this);
         }
     }
     public class FloatToIntConverter : JsonConverter<int>
