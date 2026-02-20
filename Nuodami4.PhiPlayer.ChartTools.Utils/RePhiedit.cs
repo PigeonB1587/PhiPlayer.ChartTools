@@ -2,9 +2,9 @@
 
 namespace Nuodami4.PhiPlayer.ChartTools.Utils
 {
-    public class RePhieditChartConverter : Core.RePhiedit.Chart.Root
+    public static partial class Converter
     {
-        public Core.PhiPlayer.Chart.Root ToPhiPlayer(Core.RePhiedit.Chart.Root chart)
+        public static Core.PhiPlayer.Chart.Root ToPhiPlayer(this Core.RePhiedit.Chart.Root chart)
         {
             var obj = new Core.PhiPlayer.Chart.Root()
             {
