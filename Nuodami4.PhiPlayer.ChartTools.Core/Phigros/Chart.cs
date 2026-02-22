@@ -6,7 +6,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Core.Phigros
     public static class Chart
     {
         [Serializable]
-        public class Root : IRoot
+        public class Root
         {
             public int formatVersion { get; set; }
             public float offset { get; set; }

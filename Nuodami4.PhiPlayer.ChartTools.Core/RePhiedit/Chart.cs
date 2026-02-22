@@ -73,7 +73,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Core.RePhiedit
         }
 
         [Serializable]
-        public class Root : IRoot
+        public class Root
         {
             public BPMItem[] BPMList { get; set; } = Array.Empty<BPMItem>();
             public META META { get; set; }

@@ -44,10 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Easing.cs" />
-    <Compile Include="Phigros.cs" />
+    <Compile Include="Mathematics\Easing.cs" />
+    <Compile Include="Converter\Phigros.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RePhiedit.cs" />
+    <Compile Include="Converter\RePhiedit.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nuodami4.PhiPlayer.ChartTools.Core\Nuodami4.PhiPlayer.ChartTools.Core.csproj">

@@ -44,7 +44,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IRoot.cs" />
     <Compile Include="Phigros\Chart.cs" />
     <Compile Include="PhiPlayer\Chart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

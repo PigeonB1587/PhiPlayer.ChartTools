@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Nuodami4.PhiPlayer.ChartTools.Utils
+namespace Nuodami4.PhiPlayer.ChartTools.Utils.Converter
 {
     public static partial class Converter
     {
@@ -14,10 +14,9 @@ namespace Nuodami4.PhiPlayer.ChartTools.Utils
 
             return obj;
         }
-    }
+        public static class Phigros
+        {
 
-    public static class Phigros
-    {
-        
+        }
     }
 }

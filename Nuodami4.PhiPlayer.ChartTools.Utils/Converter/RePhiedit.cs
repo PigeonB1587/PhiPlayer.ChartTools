@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Nuodami4.PhiPlayer.ChartTools.Utils
+namespace Nuodami4.PhiPlayer.ChartTools.Utils.Converter
 {
     public static partial class Converter
     {
@@ -143,43 +143,42 @@ namespace Nuodami4.PhiPlayer.ChartTools.Utils
 
             return obj;
         }
-    }
-
-    public static class RePhiedit
-    {
-        public const double speedScale = 1.3333333333333333d; // value = 4 / 3
-        public const double xScale = 0.0014814814814815d; // value = 1 / 675
-        public const double yScale = 0.0022222222222222d; // value = 1 / 450
-
-        private static readonly Dictionary<int, int> NoteTypeMap = new Dictionary<int, int>()
+        public static class RePhiedit
         {
-            {1, 1}, {2, 3}, {3, 4}, {4, 2}
-        };
+            public const double speedScale = 1.3333333333333333d; // value = 4 / 3
+            public const double xScale = 0.0014814814814815d; // value = 1 / 675
+            public const double yScale = 0.0022222222222222d; // value = 1 / 450
 
-        public static int ConvertNoteType(int i)
-        {
-            if (NoteTypeMap.TryGetValue(i, out int type))
+            private static readonly Dictionary<int, int> NoteTypeMap = new Dictionary<int, int>()
             {
-                return type;
-            }
-            return 1;
-        }
+                {1, 1}, {2, 3}, {3, 4}, {4, 2}
+            };
 
-        private static readonly Dictionary<int, int> EasingTypeMap = new Dictionary<int, int>()
-        {
-            {1, 1}, {2, 3}, {3, 2}, {4, 6}, {5, 5}, {6, 4}, {7, 7}, {8, 9}, {9, 8},
-            {10, 12}, {11, 11}, {12, 10}, {13, 13}, {14, 15}, {15, 14}, {16, 18},
-            {17, 17}, {18, 21}, {19, 20}, {20, 24}, {21, 23}, {22, 22}, {23, 25},
-            {24, 27}, {25, 26}, {26, 30}, {27, 29}, {28, 31}, {29, 28}
-        };
-
-        public static int ConvertEasingType(int i)
-        {
-            if (EasingTypeMap.TryGetValue(i, out int type))
+            public static int ConvertNoteType(int i)
             {
-                return type;
+                if (NoteTypeMap.TryGetValue(i, out int type))
+                {
+                    return type;
+                }
+                return 1;
             }
-            return 1;
+
+            private static readonly Dictionary<int, int> EasingTypeMap = new Dictionary<int, int>()
+            {
+                {1, 1}, {2, 3}, {3, 2}, {4, 6}, {5, 5}, {6, 4}, {7, 7}, {8, 9}, {9, 8},
+                {10, 12}, {11, 11}, {12, 10}, {13, 13}, {14, 15}, {15, 14}, {16, 18},
+                {17, 17}, {18, 21}, {19, 20}, {20, 24}, {21, 23}, {22, 22}, {23, 25},
+                {24, 27}, {25, 26}, {26, 30}, {27, 29}, {28, 31}, {29, 28}
+            };
+
+            public static int ConvertEasingType(int i)
+            {
+                if (EasingTypeMap.TryGetValue(i, out int type))
+                {
+                    return type;
+                }
+                return 1;
+            }
         }
     }
 }

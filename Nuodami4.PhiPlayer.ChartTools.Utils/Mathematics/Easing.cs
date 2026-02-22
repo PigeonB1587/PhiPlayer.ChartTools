@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Nuodami4.PhiPlayer.ChartTools.Utils
+namespace Nuodami4.PhiPlayer.ChartTools.Utils.Mathematics
 {
     public static class Easing
     {
