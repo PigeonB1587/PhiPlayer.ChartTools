@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Nuodami4.PhiPlayer.ChartTools.Utils.Converter
 {
@@ -31,7 +32,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Utils.Converter
                         end = rawSpeedEventItem.end * (float)RePhiedit.speedScale,
                         startTime = rawSpeedEventItem.startTime,
                         endTime = rawSpeedEventItem.endTime,
-                        bezierPoints = rawSpeedEventItem.bezierPoints,
+                        bezierPoints = rawSpeedEventItem.bezier == 1 ? rawSpeedEventItem.bezierPoints : Array.Empty<float>(),
                         easingLeftX = rawSpeedEventItem.easingLeft,
                         easingRightX = rawSpeedEventItem.easingRight,
                         easingType = RePhiedit.ConvertEasingType(rawSpeedEventItem.easingType)
@@ -43,6 +44,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Utils.Converter
                     noteList.Add(new Core.PhiPlayer.Chart.Note()
                     {
                         speed = rawNote.speed,
+                        above = rawNote.above == 1,
                         startTime = rawNote.startTime,
                         endTime = rawNote.endTime,
                         hitFxTint = rawNote.tintHitEffects,
@@ -68,7 +70,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Utils.Converter
                             end = rawEventItem.end * (float)RePhiedit.xScale,
                             startTime = rawEventItem.startTime,
                             endTime = rawEventItem.endTime,
-                            bezierPoints = rawEventItem.bezierPoints,
+                            bezierPoints = rawEventItem.bezier == 1 ? rawEventItem.bezierPoints : Array.Empty<float>(),
                             easingLeftX = rawEventItem.easingLeft,
                             easingRightX = rawEventItem.easingRight,
                             easingType = RePhiedit.ConvertEasingType(rawEventItem.easingType)
@@ -83,7 +85,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Utils.Converter
                             end = rawEventItem.end * (float)RePhiedit.yScale,
                             startTime = rawEventItem.startTime,
                             endTime = rawEventItem.endTime,
-                            bezierPoints = rawEventItem.bezierPoints,
+                            bezierPoints = rawEventItem.bezier == 1 ? rawEventItem.bezierPoints : Array.Empty<float>(),
                             easingLeftX = rawEventItem.easingLeft,
                             easingRightX = rawEventItem.easingRight,
                             easingType = RePhiedit.ConvertEasingType(rawEventItem.easingType)
@@ -98,7 +100,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Utils.Converter
                             end = -rawEventItem.end,
                             startTime = rawEventItem.startTime,
                             endTime = rawEventItem.endTime,
-                            bezierPoints = rawEventItem.bezierPoints,
+                            bezierPoints = rawEventItem.bezier == 1 ? rawEventItem.bezierPoints : Array.Empty<float>(),
                             easingLeftX = rawEventItem.easingLeft,
                             easingRightX = rawEventItem.easingRight,
                             easingType = RePhiedit.ConvertEasingType(rawEventItem.easingType)
@@ -113,12 +115,20 @@ namespace Nuodami4.PhiPlayer.ChartTools.Utils.Converter
                             end = rawEventItem.end,
                             startTime = rawEventItem.startTime,
                             endTime = rawEventItem.endTime,
-                            bezierPoints = rawEventItem.bezierPoints,
+                            bezierPoints = rawEventItem.bezier == 1 ? rawEventItem.bezierPoints : Array.Empty<float>(),
                             easingLeftX = rawEventItem.easingLeft,
                             easingRightX = rawEventItem.easingRight,
                             easingType = RePhiedit.ConvertEasingType(rawEventItem.easingType)
                         });
                     }
+
+                    judgeLineTransformLayerList.Add(new Core.PhiPlayer.Chart.JudgeLineTransformLayer()
+                    {
+                        judgeLineMoveXEvents = moveXEventList.ToArray(),
+                        judgeLineMoveYEvents = moveYEventList.ToArray(),
+                        judgeLineRotateEvents = rotateEventList.ToArray(),
+                        judgeLineDisappearEvents = disappearEventList.ToArray()
+                    });
                 }
 
                 judgeLineList.Add(new Core.PhiPlayer.Chart.JudgeLine()
@@ -136,7 +146,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Utils.Converter
 
             var obj = new Core.PhiPlayer.Chart.Root()
             {
-                formatVersion = 1,
+                formatVersion = 26,
                 offset = -chart.META.offset / 1000f,
                 judgeLineList = judgeLineList.ToArray()
             };
@@ -154,14 +164,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Utils.Converter
                 {1, 1}, {2, 3}, {3, 4}, {4, 2}
             };
 
-            public static int ConvertNoteType(int i)
-            {
-                if (NoteTypeMap.TryGetValue(i, out int type))
-                {
-                    return type;
-                }
-                return 1;
-            }
+            public static int ConvertNoteType(int i) => NoteTypeMap.TryGetValue(i, out int type) ? type : 1;
 
             private static readonly Dictionary<int, int> EasingTypeMap = new Dictionary<int, int>()
             {
@@ -171,14 +174,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Utils.Converter
                 {24, 27}, {25, 26}, {26, 30}, {27, 29}, {28, 31}, {29, 28}
             };
 
-            public static int ConvertEasingType(int i)
-            {
-                if (EasingTypeMap.TryGetValue(i, out int type))
-                {
-                    return type;
-                }
-                return 1;
-            }
+            public static int ConvertEasingType(int i) => EasingTypeMap.TryGetValue(i, out int type) ? type : 1;
         }
     }
 }

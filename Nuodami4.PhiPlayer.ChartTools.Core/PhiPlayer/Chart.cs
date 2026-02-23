@@ -8,6 +8,9 @@ namespace Nuodami4.PhiPlayer.ChartTools.Core.PhiPlayer
         [Serializable]
         public class Root
         {
+            /// <summary>
+            /// year's abbreviation, e.g. 26 for 2026. Used for compatibility check, not used in actual parsing.
+            /// </summary>
             public int formatVersion { get; set; }
             public float offset { get; set; }
             public JudgeLine[] judgeLineList { get; set; } = Array.Empty<JudgeLine>();
@@ -51,6 +54,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Core.PhiPlayer
         public class Note
         {
             public int type { get; set; }
+            public bool above { get; set; }
             public int key { get; set; }
             public int[] startTime { get; set; } = Array.Empty<int>();
             public int[] endTime { get; set; } = Array.Empty<int>();

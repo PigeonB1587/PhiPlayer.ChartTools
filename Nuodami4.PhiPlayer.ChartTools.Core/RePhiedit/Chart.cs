@@ -61,7 +61,7 @@ namespace Nuodami4.PhiPlayer.ChartTools.Core.RePhiedit
         public class Event
         {
             public int bezier { get; set; } = 0;
-            public float[] bezierPoints { get; set; } = Array.Empty<float>();
+            public float[] bezierPoints { get; set; } = new float[] { 0.0f, 0.0f, 1.0f, 1.0f };
             public float easingLeft { get; set; } = 0.0f;
             public float easingRight { get; set; } = 1.0f;
             public int easingType { get; set; } = 1;
