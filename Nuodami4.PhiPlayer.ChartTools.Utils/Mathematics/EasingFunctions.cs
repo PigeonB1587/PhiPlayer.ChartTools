@@ -2,7 +2,7 @@
 
 namespace Nuodami4.PhiPlayer.ChartTools.Utils.Mathematics
 {
-    public static class Easing
+    public static class EasingFunctions
     {
         public static double Linear(double x) => x;
         public static double OutSine(double x) => Math.Sin((x * Math.PI) / 2);

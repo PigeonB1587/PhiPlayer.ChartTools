@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mathematics\Easing.cs" />
+    <Compile Include="Mathematics\EasingFunctions.cs" />
     <Compile Include="Converter\Phigros.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Converter\RePhiedit.cs" />
