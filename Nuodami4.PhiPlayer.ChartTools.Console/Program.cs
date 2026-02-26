@@ -103,18 +103,18 @@ namespace Nuodami4.PhiPlayer.ChartTools.Console
         {
             System.Console.WriteLine("\nSupported chart types:");
             System.Console.WriteLine("  1. RePhiedit (170-)");
-            System.Console.WriteLine("  2. Phigros");
+            System.Console.WriteLine("  2. Phigros (Any)");
 
             while (true)
             {
-                System.Console.Write("Enter your choice (1 or 2): ");
+                System.Console.Write("Enter your choice: ");
                 string input = System.Console.ReadLine()?.Trim();
                 if (int.TryParse(input, out int choice) && (choice == 1 || choice == 2))
                 {
                     return (ChartFormat)(choice - 1);
                 }
                 System.Console.ForegroundColor = ConsoleColor.Red;
-                System.Console.WriteLine("Invalid choice. Please enter 1 or 2.");
+                System.Console.WriteLine("Invalid choice.");
                 System.Console.ResetColor();
             }
         }
